@@ -1,13 +1,13 @@
 # CSV ML Readiness API
 
-[![ML Ready](https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app/api/badge?score=93)](https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app)
+[![ML Ready](https://csv-mlready-api.vercel.app/api/badge?score=93)](https://csv-mlready-api.vercel.app)
 
 > **ML Readiness as a Service** - Fast, serverless API for CSV data profiling and machine learning readiness scoring.
 
 ## 🚀 Live Demo
 
-**API Endpoint**: https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app/api/analyze
-**Frontend Interface**: https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app
+**API Endpoint**: https://csv-mlready-api.vercel.app/api/analyze
+**Frontend Interface**: https://csv-mlready-api.vercel.app
 
 ## ✨ Features
 
@@ -47,7 +47,7 @@ Upload and analyze a CSV file for ML readiness.
 
 **Request:**
 ```bash
-curl -X POST "https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app/api/analyze" \
+curl -X POST "https://csv-mlready-api.vercel.app/api/analyze" \
   -F "csv=@your-file.csv" \
   -H "Content-Type: multipart/form-data"
 ```
@@ -107,7 +107,7 @@ Generate SVG badges for your ML readiness score.
 
 **Example:**
 ```
-https://csv-mlready-3hvb2ny6j-andrea-bozzos-projects.vercel.app/api/badge?score=93
+https://csv-mlready-api.vercel.app/api/badge?score=93
 ```
 
 ## 🎯 ML Readiness Scoring
