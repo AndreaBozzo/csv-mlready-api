@@ -7,13 +7,34 @@ const path = require('path');
 const crypto = require('crypto');
 
 const upload = multer({
-  limits: { fileSize: 50 * 1024 * 1024 }, // 50MB limit
+  limits: {
+    fileSize: 50 * 1024 * 1024, // 50MB limit
+    fieldSize: 100 * 1024, // 100KB field size limit
+    files: 1 // Only one file
+  },
   fileFilter: (req, file, cb) => {
-    if (file.mimetype === 'text/csv' || file.originalname.endsWith('.csv')) {
-      cb(null, true);
-    } else {
-      cb(new Error('Only CSV files are allowed'), false);
+    // Validate MIME type
+    if (file.mimetype !== 'text/csv' &&
+        file.mimetype !== 'application/csv' &&
+        file.mimetype !== 'text/plain') {
+      cb(new Error('Invalid MIME type. Only CSV files are allowed'), false);
+      return;
     }
+
+    // Validate file extension
+    const filename = file.originalname.toLowerCase();
+    if (!filename.endsWith('.csv')) {
+      cb(new Error('Invalid file extension. Only .csv files are allowed'), false);
+      return;
+    }
+
+    // Validate filename (prevent path traversal)
+    if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
+      cb(new Error('Invalid filename'), false);
+      return;
+    }
+
+    cb(null, true);
   }
 });
 
@@ -28,7 +49,12 @@ async function analyzeWithDataprof(csvBuffer, filename) {
       // Write CSV buffer to temp file
       fs.writeFileSync(tempFilePath, csvBuffer);
 
-      // Execute dataprof binary
+      // Verify binary exists and is executable
+      if (!fs.existsSync(binaryPath)) {
+        throw new Error('DataProfiler binary not found');
+      }
+
+      // Execute dataprof binary with security constraints
       const process = spawn(binaryPath, [
         tempFilePath,
         '--ml-score',
@@ -36,7 +62,12 @@ async function analyzeWithDataprof(csvBuffer, filename) {
         '--format', 'json'
       ], {
         timeout: 25000, // 25 seconds timeout (leave 5s buffer for cleanup)
-        killSignal: 'SIGTERM'
+        killSignal: 'SIGTERM',
+        stdio: ['ignore', 'pipe', 'pipe'], // Don't expose stdin
+        env: {}, // Clean environment
+        cwd: '/tmp', // Run in tmp directory
+        uid: process.getuid ? process.getuid() : undefined, // Don't escalate privileges
+        gid: process.getgid ? process.getgid() : undefined
       });
 
       let stdout = '';
