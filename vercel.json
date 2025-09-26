@@ -49,18 +49,14 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/analyze",
-      "dest": "/api/analyze.js"
+      "source": "/api/analyze",
+      "destination": "/api/analyze.js"
     },
     {
-      "src": "/api/badge",
-      "dest": "/api/badge.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/api/badge",
+      "destination": "/api/badge.js"
     }
   ]
 }
