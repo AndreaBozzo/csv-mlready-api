@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "outputDirectory": "frontend",
+  "functions": {
+    "api/analyze.js": {
+      "maxDuration": 30
+    },
+    "api/badge.js": {
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/analyze",
+      "dest": "/api/analyze.js"
+    },
+    {
+      "src": "/api/badge",
+      "dest": "/api/badge.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

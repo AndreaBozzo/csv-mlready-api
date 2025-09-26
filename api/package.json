@@ -1,0 +1,21 @@
+{
+  "name": "csv-mlready-api-backend",
+  "version": "0.1.0",
+  "description": "Serverless API for CSV ML readiness analysis",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'API build complete'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "badge-maker": "^5.0.2",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0",
+    "vercel": "^32.0.0"
+  }
+}

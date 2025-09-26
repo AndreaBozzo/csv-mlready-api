@@ -1,0 +1,14 @@
+{
+  "name": "csv-mlready-badge-service",
+  "version": "0.1.0",
+  "description": "SVG badge generation service for ML readiness scores",
+  "main": "badge.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Badge service build complete'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "badge-maker": "^3.3.1"
+  }
+}

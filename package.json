@@ -1,0 +1,32 @@
+{
+  "name": "csv-mlready-api",
+  "version": "0.1.0",
+  "description": "ML Readiness as a Service - Serverless API for CSV data profiling and ML readiness scoring",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev:api & npm run dev:frontend",
+    "dev:api": "cd api && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:badge": "cd badge-service && npm run dev",
+    "build": "npm run build:api && npm run build:frontend && npm run build:badge",
+    "build:api": "cd api && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:badge": "cd badge-service && npm run build",
+    "deploy": "npm run deploy:api && npm run deploy:badge",
+    "deploy:api": "cd api && npm run deploy",
+    "deploy:badge": "cd badge-service && npm run deploy"
+  },
+  "keywords": [
+    "csv",
+    "ml",
+    "machine-learning",
+    "data-profiling",
+    "serverless",
+    "api"
+  ],
+  "author": "Andrea",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

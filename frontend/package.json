@@ -1,0 +1,14 @@
+{
+  "name": "csv-mlready-frontend",
+  "version": "0.1.0",
+  "description": "Frontend for CSV ML Readiness API",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Frontend build complete - static files ready'",
+    "serve": "python -m http.server 8080"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}

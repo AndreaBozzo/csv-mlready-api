@@ -1,0 +1,8 @@
+# Files to exclude from Vercel deployment
+.git
+.gitignore
+README.md
+DEVELOPMENT.md
+
+# Keep the binary and source files
+!api/bin/dataprof

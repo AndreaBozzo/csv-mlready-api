@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV ML Readiness Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSV ML Readiness Checker</h1>
+            <p>Upload your CSV file and get an instant ML readiness score in seconds</p>
+        </header>
+
+        <div class="upload-section">
+            <div id="drop-zone" class="drop-zone">
+                <div class="drop-zone-content">
+                    <div class="upload-icon">
+                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                        </svg>
+                    </div>
+                    <h3>Drop your CSV file here</h3>
+                    <p>or <button id="browse-btn" class="browse-btn">browse files</button></p>
+                    <small>Maximum file size: 50MB</small>
+                    <input type="file" id="file-input" accept=".csv" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your data...</p>
+        </div>
+
+        <div id="results" class="results" style="display: none;">
+            <div class="score-card">
+                <div class="score-circle">
+                    <div class="score-number" id="score-number">-</div>
+                    <div class="score-label">ML Ready</div>
+                </div>
+                <div class="score-description" id="score-description">
+                    Upload a file to see results
+                </div>
+            </div>
+
+            <div class="badge-section">
+                <h3>Share your score</h3>
+                <div class="badge-preview">
+                    <img id="badge-img" src="" alt="ML Readiness Badge">
+                </div>
+                <div class="badge-code">
+                    <label for="badge-markdown">Markdown for README:</label>
+                    <textarea id="badge-markdown" readonly></textarea>
+                    <button id="copy-badge" class="copy-btn">Copy to Clipboard</button>
+                </div>
+            </div>
+
+            <div class="analysis-details">
+                <div class="details-section">
+                    <h3>Dataset Overview</h3>
+                    <div id="dataset-overview"></div>
+                </div>
+
+                <div class="details-section">
+                    <h3>Issues Found</h3>
+                    <ul id="issues-list"></ul>
+                </div>
+
+                <div class="details-section">
+                    <h3>Recommendations</h3>
+                    <ul id="recommendations-list"></ul>
+                </div>
+
+                <div class="details-section">
+                    <h3>Column Analysis</h3>
+                    <div id="columns-table"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Try it with sample data</h2>
+            <div class="demo-buttons">
+                <button id="demo-good" class="demo-btn">Load Good Dataset</button>
+                <button id="demo-poor" class="demo-btn">Load Poor Dataset</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                Powered by <strong>DataProfiler</strong> •
+                <a href="https://github.com/your-username/csv-mlready-api" target="_blank">GitHub</a> •
+                <a href="#api-docs">API Docs</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
