@@ -8,18 +8,18 @@ class MLReadinessChecker {
 
     // Initialize Vercel Analytics
     initializeAnalytics() {
-        if (typeof window !== 'undefined' && window.va) {
-            window.va('init');
-        }
+        // Vercel Analytics loads automatically with /_vercel/insights/script.js
+        console.log('Vercel Analytics initialized');
     }
 
     // Analytics tracking helper
     track(eventName, properties = {}) {
         if (typeof window !== 'undefined' && window.va) {
             window.va('track', eventName, properties);
+            console.log('📊 Analytics tracked:', eventName, properties);
         } else {
             // Fallback if analytics not loaded yet
-            console.log('Analytics tracking:', eventName, properties);
+            console.log('⚠️ Analytics not ready yet:', eventName, properties);
         }
     }
 
