@@ -213,5 +213,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Community**: Contributors and feedback
 
 ---
-
-**Built with ❤️ for the ML community**
