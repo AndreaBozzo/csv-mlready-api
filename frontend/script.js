@@ -5,6 +5,13 @@ class MLReadinessChecker {
         this.apiBaseUrl = window.location.origin; // Will use current domain in production
     }
 
+    // Analytics tracking helper
+    track(eventName, properties = {}) {
+        if (typeof window !== 'undefined' && window.va) {
+            window.va('track', eventName, properties);
+        }
+    }
+
     initializeElements() {
         this.dropZone = document.getElementById('drop-zone');
         this.fileInput = document.getElementById('file-input');
@@ -42,8 +49,14 @@ class MLReadinessChecker {
         this.copyBadgeBtn.addEventListener('click', this.copyBadgeToClipboard.bind(this));
 
         // Demo buttons
-        this.demoGoodBtn.addEventListener('click', () => this.loadDemoData('good'));
-        this.demoPoorBtn.addEventListener('click', () => this.loadDemoData('poor'));
+        this.demoGoodBtn.addEventListener('click', () => {
+            this.track('Demo Data Loaded', { demoType: 'good' });
+            this.loadDemoData('good');
+        });
+        this.demoPoorBtn.addEventListener('click', () => {
+            this.track('Demo Data Loaded', { demoType: 'poor' });
+            this.loadDemoData('poor');
+        });
     }
 
     handleDragOver(e) {
@@ -78,6 +91,13 @@ class MLReadinessChecker {
             return;
         }
 
+        // Track file upload start
+        this.track('File Upload Started', {
+            fileName: file.name,
+            fileSizeMB: parseFloat((file.size / 1024 / 1024).toFixed(2)),
+            fileType: file.type || 'unknown'
+        });
+
         this.showLoading();
 
         try {
@@ -95,9 +115,25 @@ class MLReadinessChecker {
                 throw new Error(result.error || 'Analysis failed');
             }
 
+            // Track successful analysis
+            this.track('Analysis Completed', {
+                score: result.analysis?.score || 0,
+                totalRows: result.analysis?.totalRows || 0,
+                totalColumns: result.analysis?.totalColumns || 0,
+                engineUsed: result.meta?.engineUsed || 'unknown',
+                mlReadinessLevel: result.analysis?.mlReadinessLevel || 'unknown'
+            });
+
             this.displayResults(result);
         } catch (error) {
             console.error('Analysis error:', error);
+
+            // Track analysis failure
+            this.track('Analysis Failed', {
+                error: error.message,
+                fileName: file?.name || 'unknown'
+            });
+
             alert(`Analysis failed: ${error.message}`);
         } finally {
             this.hideLoading();
