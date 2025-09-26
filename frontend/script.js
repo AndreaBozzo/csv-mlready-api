@@ -31,9 +31,6 @@ class MLReadinessChecker {
         this.results = document.getElementById('results');
         this.scoreNumber = document.getElementById('score-number');
         this.scoreDescription = document.getElementById('score-description');
-        this.badgeImg = document.getElementById('badge-img');
-        this.badgeMarkdown = document.getElementById('badge-markdown');
-        this.copyBadgeBtn = document.getElementById('copy-badge');
         this.datasetOverview = document.getElementById('dataset-overview');
         this.issuesList = document.getElementById('issues-list');
         this.recommendationsList = document.getElementById('recommendations-list');
@@ -56,8 +53,6 @@ class MLReadinessChecker {
         this.dropZone.addEventListener('dragleave', this.handleDragLeave.bind(this));
         this.dropZone.addEventListener('drop', this.handleDrop.bind(this));
 
-        // Copy badge button
-        this.copyBadgeBtn.addEventListener('click', this.copyBadgeToClipboard.bind(this));
 
         // Demo buttons
         this.demoGoodBtn.addEventListener('click', () => {
@@ -234,8 +229,6 @@ class MLReadinessChecker {
             this.columnsTable.innerHTML = tableHtml;
         }
 
-        // Update badge
-        this.updateBadge(analysis.score);
 
         // Show results
         this.results.style.display = 'block';
@@ -279,29 +272,6 @@ class MLReadinessChecker {
         };
     }
 
-    updateBadge(score) {
-        const badgeUrl = `${this.apiBaseUrl}/api/badge?score=${score}`;
-        this.badgeImg.src = badgeUrl;
-        this.badgeImg.alt = `ML Ready: ${score}%`;
-
-        const markdown = `[![ML Ready](${badgeUrl})](${window.location.origin})`;
-        this.badgeMarkdown.value = markdown;
-    }
-
-    async copyBadgeToClipboard() {
-        try {
-            await navigator.clipboard.writeText(this.badgeMarkdown.value);
-            const originalText = this.copyBadgeBtn.textContent;
-            this.copyBadgeBtn.textContent = 'Copied!';
-            setTimeout(() => {
-                this.copyBadgeBtn.textContent = originalText;
-            }, 2000);
-        } catch (error) {
-            console.error('Failed to copy to clipboard:', error);
-            // Fallback: select the text
-            this.badgeMarkdown.select();
-        }
-    }
 
     async loadDemoData(type) {
         // For demo purposes, we'll simulate different datasets

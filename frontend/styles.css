@@ -203,7 +203,7 @@ header p {
     color: #111827;
 }
 
-.badge-section {
+.info-section {
     margin-bottom: 40px;
     padding: 32px;
     background: #f9fafb;
@@ -211,60 +211,30 @@ header p {
     border: 1px solid #e5e7eb;
 }
 
-.badge-section h3 {
+.info-section h3 {
     margin-bottom: 20px;
     color: #111827;
     font-size: 1.125rem;
     font-weight: 600;
 }
 
-.badge-preview {
-    margin-bottom: 20px;
+.info-section p {
+    margin-bottom: 12px;
+    color: #4b5563;
+    line-height: 1.6;
 }
 
-.badge-code label {
-    display: block;
-    margin-bottom: 8px;
+.info-section a {
+    color: #3b82f6;
+    text-decoration: none;
     font-weight: 500;
-    color: #374151;
-    font-size: 0.875rem;
 }
 
-.badge-code textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    font-size: 0.875rem;
-    resize: vertical;
-    min-height: 60px;
-    background: white;
-    color: #111827;
+.info-section a:hover {
+    color: #2563eb;
+    text-decoration: underline;
 }
 
-.badge-code textarea:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.copy-btn {
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    margin-top: 12px;
-    transition: background 0.2s ease;
-    font-size: 0.875rem;
-}
-
-.copy-btn:hover {
-    background: #059669;
-}
 
 .analysis-details {
     display: grid;
