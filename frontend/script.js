@@ -1,19 +1,26 @@
 class MLReadinessChecker {
     constructor() {
+        this.initializeAnalytics();
         this.initializeElements();
         this.attachEventListeners();
         this.apiBaseUrl = window.location.origin; // Will use current domain in production
     }
 
+    // Initialize Vercel Analytics
+    initializeAnalytics() {
+        if (typeof window !== 'undefined' && window.va) {
+            window.va('init');
+        }
+    }
+
     // Analytics tracking helper
     track(eventName, properties = {}) {
-        // Import and use Vercel Analytics track function
-        import('./analytics.js').then(({ track }) => {
-            track(eventName, properties);
-        }).catch(() => {
-            // Fallback if analytics fails to load
+        if (typeof window !== 'undefined' && window.va) {
+            window.va('track', eventName, properties);
+        } else {
+            // Fallback if analytics not loaded yet
             console.log('Analytics tracking:', eventName, properties);
-        });
+        }
     }
 
     initializeElements() {
