@@ -7,9 +7,13 @@ class MLReadinessChecker {
 
     // Analytics tracking helper
     track(eventName, properties = {}) {
-        if (typeof window !== 'undefined' && window.va) {
-            window.va('track', eventName, properties);
-        }
+        // Import and use Vercel Analytics track function
+        import('./analytics.js').then(({ track }) => {
+            track(eventName, properties);
+        }).catch(() => {
+            // Fallback if analytics fails to load
+            console.log('Analytics tracking:', eventName, properties);
+        });
     }
 
     initializeElements() {

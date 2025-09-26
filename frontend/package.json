@@ -8,7 +8,11 @@
     "build": "echo 'Frontend build complete - static files ready'",
     "serve": "python -m http.server 8080"
   },
+  "type": "module",
   "devDependencies": {
     "serve": "^14.0.0"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
   }
 }

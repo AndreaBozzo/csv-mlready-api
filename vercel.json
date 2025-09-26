@@ -1,9 +1,6 @@
 {
   "version": 2,
   "outputDirectory": "frontend",
-  "analytics": {
-    "enable": true
-  },
   "functions": {
     "api/analyze.js": {
       "maxDuration": 30
