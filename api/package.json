@@ -9,7 +9,6 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
-    "badge-maker": "^5.0.2",
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
     "multer": "^1.4.5-lts.1"

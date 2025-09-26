@@ -16,7 +16,6 @@
 - **📊 Advanced data profiling** powered by [DataProfiler v0.4.6](https://github.com/AndreaBozzo/dataprof)
 - **🛡️ Robust fallback** system for maximum reliability
 - **🎨 Professional frontend** with drag-and-drop interface
-- **📱 Embeddable badges** for README files
 - **☁️ Fully serverless** on Vercel with zero maintenance
 
 ## 🔧 Technology Stack
@@ -96,19 +95,6 @@ curl -X POST "https://csv-mlready-api.vercel.app/api/analyze" \
 }
 ```
 
-### GET `/api/badge`
-
-Generate SVG badges for your ML readiness score.
-
-**Parameters:**
-- `score` (required): ML readiness score (0-100)
-- `style` (optional): Badge style (`flat`, `plastic`, etc.)
-- `label` (optional): Custom label text
-
-**Example:**
-```
-https://csv-mlready-api.vercel.app/api/badge?score=93
-```
 
 ## 🎯 ML Readiness Scoring
 
@@ -203,7 +189,7 @@ The system automatically falls back to JavaScript if the binary fails, ensuring 
 ## 📊 Use Cases
 
 - **Data Scientists**: Quick dataset assessment before modeling
-- **GitHub Projects**: Embeddable ML readiness badges
+- **GitHub Projects**: Link to online CSV analysis
 - **CI/CD Pipelines**: Automated data quality checks
 - **Research**: Dataset quality comparison
 - **Education**: Learning data preprocessing concepts
