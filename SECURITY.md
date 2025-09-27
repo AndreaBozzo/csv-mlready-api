@@ -48,7 +48,7 @@ Current npm audit shows 13 vulnerabilities in development dependencies:
 - **Mitigation**: These are not exposed in production runtime
 
 ### Binary Trust
-- **Source**: Official dataprof v0.4.6 from GitHub releases
+- **Source**: Official dataprof v0.4.61 from GitHub releases
 - **Verification**: BuildID `b1d40214b0d3ae846ea615545279cbcbd8df26be`
 - **Risk**: Binary execution requires trust in upstream project
 - **Fallback**: JavaScript implementation available if binary fails

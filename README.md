@@ -13,7 +13,7 @@
 
 - **🔥 10-second analysis** for datasets up to 50MB
 - **🎯 ML Readiness scoring** (0-100) with detailed recommendations
-- **📊 Advanced data profiling** powered by [DataProfiler v0.4.6](https://github.com/AndreaBozzo/dataprof)
+- **📊 Advanced data profiling** powered by [DataProfiler v0.4.61](https://github.com/AndreaBozzo/dataprof)
 - **🛡️ Robust fallback** system for maximum reliability
 - **🎨 Professional frontend** with drag-and-drop interface
 - **☁️ Fully serverless** on Vercel with zero maintenance
@@ -21,7 +21,7 @@
 ## 🔧 Technology Stack
 
 ### Backend
-- **Core Engine**: DataProfiler v0.4.6 (Rust) with JavaScript fallback
+- **Core Engine**: DataProfiler v0.4.61 (Rust) with JavaScript fallback
 - **Runtime**: Node.js 18+ serverless functions
 - **Platform**: Vercel with 30-second timeout
 - **File Processing**: Multer + CSV parsing with streaming support
@@ -86,10 +86,10 @@ curl -X POST "https://csv-mlready-api.vercel.app/api/analyze" \
     ],
     "dataQualityScore": 96.67,
     "mlReadinessLevel": "Ready",
-    "processingEngine": "dataprof-v0.4.6"
+    "processingEngine": "dataprof-v0.4.61"
   },
   "meta": {
-    "engineUsed": "dataprof-v0.4.6",
+    "engineUsed": "dataprof-v0.4.61",
     "processingTime": 1234567890
   }
 }
@@ -174,7 +174,7 @@ The app automatically:
 
 The API uses a robust dual-engine approach:
 
-1. **Primary**: DataProfiler v0.4.6 (Rust binary)
+1. **Primary**: DataProfiler v0.4.61 (Rust binary)
    - Advanced ML analysis
    - High performance
    - Detailed feature classification

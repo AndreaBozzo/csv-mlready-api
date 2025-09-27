@@ -190,7 +190,7 @@ function convertDataprofToApiResponse(dataprofResult, filename) {
     columns: columnAnalysis,
     dataQualityScore: quality?.quality_score || 0,
     mlReadinessLevel: mlReadiness?.level || 'Unknown',
-    processingEngine: 'dataprof-v0.4.6'
+    processingEngine: 'dataprof-v0.4.61'
   };
 }
 
@@ -383,7 +383,7 @@ module.exports = async (req, res) => {
         try {
           console.log('Attempting analysis with dataprof binary...');
           analysis = await analyzeWithDataprof(req.file.buffer, req.file.originalname);
-          engineUsed = 'dataprof-v0.4.6';
+          engineUsed = 'dataprof-v0.4.61';
           console.log('Successfully analyzed with dataprof binary');
         } catch (dataprofError) {
           console.warn('Dataprof analysis failed, falling back to JS implementation:', dataprofError.message);
